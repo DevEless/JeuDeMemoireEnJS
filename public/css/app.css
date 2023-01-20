@@ -6,3 +6,10 @@
 .btn2 .btn.btn-secondary {
   margin: 5%;
 }
+
+body {
+  background-image: url("../image/301412-Pokemon-748x421.jpg");
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
