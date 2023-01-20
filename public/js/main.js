@@ -1,27 +1,40 @@
-
 const divResultat = document.querySelector('#resultat')
 
 var tabJeu = [
-[0,0,0,0],
-[0,0,0,0],
-[0,0,0,0],
-[0,0,0,0]
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
 ];
+
+// var tabResultat = [
+//     [1, 4, 3, 4],
+//     [1, 2, 3, 2],
+//     [0, 0, 0, 5],
+//     [0, 0, 0, 0]
+// ];
+
+var tabResultat = genereTableauAleatoire()
+
+let oldselection = [];
+let nbAffiche = 0;
+var ready = true;
 
 afficherTableau();
 
 function afficherTableau() {
     let txt = ""
 
-    for(let i=0; i < tabJeu.length; i++){
-        
-        txt += "<div>";
-        
-        for(let j=0; j < tabJeu[i].length ; j++){
-            if(tabJeu[i][j] === 0){
+    for (let i = 0; i < tabJeu.length; i++) {
 
-                txt += "<button class ='btn btn-primary m-2' style='width: 200px; height: 250px'>Afficher</button>"
-            }else{
+        txt += "<div>";
+
+        for (let j = 0; j < tabJeu[i].length; j++) {
+            if (tabJeu[i][j] === 0) {
+
+                txt += "<button class ='btn btn-primary m-2' style='width: 200px; height: 250px' onClick='verif(\"" + i + "-" + j + "\")'>Afficher</button> ";
+
+            } else {
                 txt += `<img src=  '${getImage(tabJeu[i][j])}' style='width: 200px; height: 250px' class='m-2'>`;
             }
         }
@@ -34,34 +47,91 @@ function afficherTableau() {
 function getImage(valeur) {
     let imgTxt = "";
     switch (valeur) {
-        case 1: imgTxt += "../../public/image/pig.png";
-            
+        case 1:
+            imgTxt += "../../public/image/pig.png";
+
             break;
-            case 2:
-                imgTxt += "../../public/image/elephant.png";
+        case 2:
+            imgTxt += "../../public/image/elephant.png";
             break;
-            case 3:
-                imgTxt += "../../public/image/giraffe.png";
+        case 3:
+            imgTxt += "../../public/image/giraffe.png";
             break;
-            case 4:
-                imgTxt += "../../public/image/hippo.png";
+        case 4:
+            imgTxt += "../../public/image/hippo.png";
             break;
-            case 5:
-                imgTxt += "../../public/image/monkey.png";
+        case 5:
+            imgTxt += "../../public/image/monkey.png";
             break;
-            case 6:
-                imgTxt += "../../public/image/panda.png";
+        case 6:
+            imgTxt += "../../public/image/panda.png";
             break;
-            case 7:
-                imgTxt += "../../public/image/parrot.png";
+        case 7:
+            imgTxt += "../../public/image/parrot.png";
             break;
-            case 8:
-                imgTxt += "../../public/image/penguin.png";
+        case 8:
+            imgTxt += "../../public/image/penguin.png";
             break;
-    
-        default: console.log("cas non pris en compte");
+
+        default:
+            console.log("cas non pris en compte");
             break;
     }
     return imgTxt;
-    
+
+}
+
+
+function verif(bouton) {
+    if (ready) {
+
+        nbAffiche++;
+
+        var ligne = bouton.substr(0, 1);
+        var colonne = bouton.substr(2, 1);
+        console.log(ligne);
+        console.log(colonne);
+        tabJeu[ligne][colonne] = tabResultat[ligne][colonne];
+        afficherTableau();
+
+        if (nbAffiche > 1) {
+            ready = false;
+            setTimeout(() => {
+                if (tabJeu[ligne][colonne] !== tabResultat[oldselection[0]][oldselection[1]]) {
+                    tabJeu[ligne][colonne] = 0;
+                    tabJeu[oldselection[0]][oldselection[1]] = 0;
+                }
+                afficherTableau()
+                ready = true
+
+                nbAffiche = 0;
+            }, 1000);
+        } else {
+            oldselection = [ligne, colonne];
+        }
+    }
+}
+
+function genereTableauAleatoire() {
+    var tab = [];
+    var nbImagePosition = [0, 0, 0, 0, 0, 0, 0, 0]
+
+    for (let i = 0; i < 4; i++) {
+        let ligne = [];
+        for (let j = 0; j < 4; j++) {
+            var fin = false;
+            while (!fin) {
+                var randomImage = Math.floor(Math.random() * 8);
+                if (nbImagePosition[randomImage] < 2) {
+                    ligne.push(randomImage + 1);
+                    nbImagePosition[randomImage]++;
+                    fin = true;
+                }
+            }
+            // ligne.push(0);
+        }
+
+        tab.push(ligne);
+    }
+    return tab;
 }
