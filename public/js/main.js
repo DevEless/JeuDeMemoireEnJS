@@ -1,18 +1,13 @@
 const divResultat = document.querySelector('#resultat')
 
 var tabJeu = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
+    [0, 0],
+    [0, 0],
+    [0, 0],
+
+
 ];
 
-// var tabResultat = [
-//     [1, 4, 3, 4],
-//     [1, 2, 3, 2],
-//     [0, 0, 0, 5],
-//     [0, 0, 0, 0]
-// ];
 
 var tabResultat = genereTableauAleatoire()
 
@@ -32,10 +27,10 @@ function afficherTableau() {
         for (let j = 0; j < tabJeu[i].length; j++) {
             if (tabJeu[i][j] === 0) {
 
-                txt += "<button class ='btn btn-primary m-2' style='width: 200px; height: 250px' onClick='verif(\"" + i + "-" + j + "\")'>Afficher</button> ";
+                txt += "<button class ='btn btn-dark m-2' style='width: 130px; height: 130px' onClick='verif(\"" + i + "-" + j + "\")'></button> ";
 
             } else {
-                txt += `<img src=  '${getImage(tabJeu[i][j])}' style='width: 200px; height: 250px' class='m-2'>`;
+                txt += `<img src=  '${getImage(tabJeu[i][j])}' style='width: 130px; height: 130px' class='m-2'>`;
             }
         }
         txt += "</div>";
@@ -48,30 +43,16 @@ function getImage(valeur) {
     let imgTxt = "";
     switch (valeur) {
         case 1:
-            imgTxt += "../../public/image/pig.png";
+            imgTxt += "../../public/image/un.png";
 
             break;
         case 2:
-            imgTxt += "../../public/image/elephant.png";
+            imgTxt += "../../public/image/deux.png";
             break;
         case 3:
-            imgTxt += "../../public/image/giraffe.png";
+            imgTxt += "../../public/image/trois.png";
             break;
-        case 4:
-            imgTxt += "../../public/image/hippo.png";
-            break;
-        case 5:
-            imgTxt += "../../public/image/monkey.png";
-            break;
-        case 6:
-            imgTxt += "../../public/image/panda.png";
-            break;
-        case 7:
-            imgTxt += "../../public/image/parrot.png";
-            break;
-        case 8:
-            imgTxt += "../../public/image/penguin.png";
-            break;
+
 
         default:
             console.log("cas non pris en compte");
@@ -114,21 +95,21 @@ function verif(bouton) {
 
 function genereTableauAleatoire() {
     var tab = [];
-    var nbImagePosition = [0, 0, 0, 0, 0, 0, 0, 0]
+    var nbImagePosition = [0, 0, 0]
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 3; i++) {
         let ligne = [];
-        for (let j = 0; j < 4; j++) {
+        for (let j = 0; j < 2; j++) {
             var fin = false;
             while (!fin) {
-                var randomImage = Math.floor(Math.random() * 8);
+                var randomImage = Math.floor(Math.random() * 3);
                 if (nbImagePosition[randomImage] < 2) {
                     ligne.push(randomImage + 1);
                     nbImagePosition[randomImage]++;
                     fin = true;
                 }
             }
-            // ligne.push(0);
+
         }
 
         tab.push(ligne);
