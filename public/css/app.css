@@ -13,3 +13,8 @@ body {
   height: 100%;
   width: 100%;
 }
+
+#time {
+  font-size: 36px;
+  font-weight: bold;
+}

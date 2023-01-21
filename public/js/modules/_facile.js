@@ -1,4 +1,37 @@
 const divResultat = document.querySelector('#resultat')
+let timer = 0;
+let interval;
+let started = false;
+let name2 = document.getElementById('fname');
+let startStopButton = document.getElementById("startStop");
+let timeDisplay = document.getElementById("time");
+let nameInput = document.getElementById("name");
+
+
+function updateTime() {
+    let hours = Math.floor(timer / 3600);
+    let minutes = Math.floor((timer % 3600) / 60);
+    let seconds = timer % 60;
+
+    timeDisplay.innerHTML = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+
+startStopButton.addEventListener("click", () => {
+    if (!started) {
+        interval = setInterval(() => {
+            timer++;
+            updateTime();
+        }, 1000);
+        started = true;
+        name2.textContent = nameInput.value
+        startStopButton.innerHTML = "Stop";
+    } else {
+        clearInterval(interval);
+        started = false;
+        startStopButton.innerHTML = "Start";
+    }
+});
+
 
 var tabJeu = [
     [0, 0],
