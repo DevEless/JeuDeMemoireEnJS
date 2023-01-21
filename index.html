@@ -12,45 +12,55 @@
 </head>
 
 <body>
-    <button id="startStop" class="btn btn-success">Start</button>
 
-    <input id="name" placeholder="Entrez votre nom">
-    <table id="scores">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <h1 id = fname> </h1>
-                <th>Time</th>
-            </tr>
-        </thead>
-        <tbody id="score-rows"></tbody>
-    </table>
+    <div class="titre"> <img src="./public/image/pokemon.png" alt=""></div>
 
-    <p id="time">00:00:00</p>
-    <div class="btn2">
-    </div>
-    <button class="btn btn-secondary">
-        mode simple
-    </button>
+    <div class="container">
+        <div class="row">
+            <div class="col deux">
+                <div class="container text-center">
+                    <div id="resultat">
+                    </div>
 
-    <button class="btn btn-secondary">
-        mode difficile
-    </button>
+                </div>
 
-    </div>
-    <div class="container text-center">
-        <div id="resultat">
+            </div>
+            <div class="col un">
 
+                <div class="input-group mb-3">
+                    <button class="btn btn-outline-secondary" id="startStop" type="button"
+                        id="button-addon1">Start</button>
+                    <input id="name" placeholder="Entrez votre nom" type="text" class="form-control-sm">
+                </div>
+                <table id="scores">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="score-rows"></tbody>
+                </table>
+                <p id="time">00:00:00</p>
+
+                <button class="btn btn-secondary">
+                    FACILE
+                </button>
+
+                <button class="btn btn-secondary">
+                    DIFFICILE
+                </button>
+
+            </div>
         </div>
+    </div>
 
     </div>
 
 
-    <span id="mode">
 
-    </span>
 
-    <script src="./public/js/main.js" ></script>
+    <script src="./public/js/main.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
 

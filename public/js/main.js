@@ -6,7 +6,6 @@ let madiv = document.getElementById('mode')
 let timer = 0;
 let interval;
 let started = false;
-let name2 = document.getElementById('fname');
 let startStopButton = document.getElementById("startStop");
 let timeDisplay = document.getElementById("time");
 let nameInput = document.getElementById("name");
@@ -63,7 +62,13 @@ function displayScores() {
         scoreRows.appendChild(row);
     }
 }
+let fin = false;
+
 function updateTime() {
+    if (fin) {
+        clearInterval(interval);
+        return;
+    }
     let hours = Math.floor(timer / 3600);
     let minutes = Math.floor((timer % 3600) / 60);
     let seconds = timer % 60;
@@ -71,8 +76,10 @@ function updateTime() {
     timeDisplay.innerHTML = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
 
+
 startStopButton.addEventListener("click", () => {
     if (!started) {
+        timer = 0;
         interval = setInterval(() => {
             timer++;
             updateTime();
@@ -109,10 +116,10 @@ function afficherTableau() {
         for (let j = 0; j < tabJeu[i].length; j++) {
             if (tabJeu[i][j] === 0) {
 
-                txt += "<button class ='btn btn-dark m-2' style='width: 130px; height: 130px' onClick='verif(\"" + i + "-" + j + "\")'></button> ";
+                txt += "<button class ='btn btn-dark m-2' style='width: 80px; height: 100px' onClick='verif(\"" + i + "-" + j + "\")'></button> ";
 
             } else {
-                txt += `<img src=  '${getImage(tabJeu[i][j])}' style='width: 130px; height: 130px' class='m-2'>`;
+                txt += `<img src=  '${getImage(tabJeu[i][j])}' style='width: 80px; height: 100px' class='m-2'>`;
             }
         }
         txt += "</div>";
@@ -182,7 +189,7 @@ function genereTableauAleatoire() {
     for (let i = 0; i < 3; i++) {
         let ligne = [];
         for (let j = 0; j < 2; j++) {
-            var fin = false;
+            let fin = false;
             while (!fin) {
                 var randomImage = Math.floor(Math.random() * 3);
                 if (nbImagePosition[randomImage] < 2) {
@@ -215,10 +222,10 @@ function afficherTableau1() {
         for (let j = 0; j < tabJeu1[i].length; j++) {
             if (tabJeu1[i][j] === 0) {
 
-                txt += "<button class ='btn btn-dark m-2' style='width: 130px; height: 130px' onClick='verif1(\"" + i + "-" + j + "\")'></button> ";
+                txt += "<button class ='btn btn-dark m-2' style='width: 80px; height: 100px' onClick='verif1(\"" + i + "-" + j + "\")'></button> ";
 
             } else {
-                txt += `<img src=  '${getImage1(tabJeu1[i][j])}' style='width: 130px; height: 130px' class='m-2'>`;
+                txt += `<img src=  '${getImage1(tabJeu1[i][j])}' style='width: 80px; height: 100px' class='m-2'>`;
             }
         }
         txt += "</div>";
@@ -302,7 +309,7 @@ function genereTableauAleatoire1() {
     for (let i = 0; i < 4; i++) {
         let ligne = [];
         for (let j = 0; j < 4; j++) {
-            var fin = false;
+        let fin = false;
             while (!fin) {
                 var randomImage = Math.floor(Math.random() * 8);
                 if (nbImagePosition[randomImage] < 2) {
