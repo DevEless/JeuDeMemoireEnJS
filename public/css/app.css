@@ -40,7 +40,7 @@ body {
 }
 
 .titre {
-  height: 50px;
+  height: 80px;
   width: 100%;
   justify-content: center;
   display: flex;
@@ -48,4 +48,9 @@ body {
 
 .col.un {
   margin-top: 4%;
+}
+
+.btn.m-2 {
+  background-image: url("../image/Dos-carte-pokemon-icone.webp") !important;
+  background-size: 75px;
 }

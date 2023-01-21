@@ -1,6 +1,6 @@
 //VARIABLE
-let btn1 = document.querySelectorAll('.btn.btn-secondary')[0]
-let btn2 = document.querySelectorAll('.btn.btn-secondary')[1]
+let btn1 = document.querySelectorAll('.btn.btn-danger')[0]
+let btn2 = document.querySelectorAll('.btn.btn-light')[0]
 let madiv = document.getElementById('mode')
 
 let timer = 0;
@@ -116,7 +116,7 @@ function afficherTableau() {
         for (let j = 0; j < tabJeu[i].length; j++) {
             if (tabJeu[i][j] === 0) {
 
-                txt += "<button class ='btn btn-dark m-2' style='width: 80px; height: 100px' onClick='verif(\"" + i + "-" + j + "\")'></button> ";
+                txt += "<button class ='btn btn-primary m-2' style='width: 80px; height: 100px' onClick='verif(\"" + i + "-" + j + "\")'></button> ";
 
             } else {
                 txt += `<img src=  '${getImage(tabJeu[i][j])}' style='width: 80px; height: 100px' class='m-2'>`;
@@ -222,7 +222,7 @@ function afficherTableau1() {
         for (let j = 0; j < tabJeu1[i].length; j++) {
             if (tabJeu1[i][j] === 0) {
 
-                txt += "<button class ='btn btn-dark m-2' style='width: 80px; height: 100px' onClick='verif1(\"" + i + "-" + j + "\")'></button> ";
+                txt += "<button class ='btn m-2' style='width: 80px; height: 100px' onClick='verif1(\"" + i + "-" + j + "\")'></button> ";
 
             } else {
                 txt += `<img src=  '${getImage1(tabJeu1[i][j])}' style='width: 80px; height: 100px' class='m-2'>`;

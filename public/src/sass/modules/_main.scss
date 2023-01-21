@@ -1,49 +1,59 @@
-.btn2{
-display: flex;
-justify-content: center;
-margin-top: 5%;
-    .btn.btn-secondary{
-        margin: 5%;
-    }
-}
-
-body{
-    background-image: url("../../../image/301412-Pokemon-748x421.jpg");
-    height: 100%;
-    width: 100%;
-}
 .btn2 {
     display: flex;
     justify-content: center;
     margin-top: 5%;
-  }
-  .btn2 .btn.btn-secondary {
+
+    .btn.btn-secondary {
+        margin: 5%;
+    }
+}
+
+body {
+    background-image: url("../../../image/301412-Pokemon-748x421.jpg");
+    height: 100%;
+    width: 100%;
+}
+
+.btn2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.btn2 .btn.btn-secondary {
     margin: 5%;
-  }
-  
-  body {
+}
+
+body {
     background-image: url("../image/301412-Pokemon-748x421.jpg");
     background-size: cover;
     height: 80vh;
     width: 100%;
-  }
-  
-  #time {
+}
+
+#time {
     font-size: 36px;
     font-weight: bold;
-  }
+}
 
-.container{
+.container {
     margin-top: 6%;
 }
+
 .titre {
-    height: 50px;
+    height: 80px;
     width: 100%;
     justify-content: center;
     display: flex;
+
 }
 
-.col.un{
+.col.un {
     margin-top: 4%;
-    
+
+}
+
+.btn.m-2 {
+    background-image: url("../image/Dos-carte-pokemon-icone.webp") !important;
+    background-size: 75px;
 }
