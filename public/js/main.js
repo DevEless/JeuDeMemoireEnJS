@@ -32,8 +32,37 @@ let oldselection = [];
 let nbAffiche = 0;
 var ready = true;
 
+//VARIABLE DIFFICILE
+var tabJeu1 = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
+];
+
+
+var tabResultat1 = genereTableauAleatoire1()
+
+
 
 //TIMER
+
+let scores = [];
+
+function displayScores() {
+    let scoreRows = document.getElementById("score-rows");
+    scoreRows.innerHTML = "";
+    for (let i = 0; i < scores.length; i++) {
+        let row = document.createElement("tr");
+        let nameCell = document.createElement("td");
+        nameCell.innerHTML = scores[i].name;
+        row.appendChild(nameCell);
+        let timeCell = document.createElement("td");
+        timeCell.innerHTML = scores[i].time;
+        row.appendChild(timeCell);
+        scoreRows.appendChild(row);
+    }
+}
 function updateTime() {
     let hours = Math.floor(timer / 3600);
     let minutes = Math.floor((timer % 3600) / 60);
@@ -49,14 +78,20 @@ startStopButton.addEventListener("click", () => {
             updateTime();
         }, 1000);
         started = true;
-        name2.textContent = nameInput.value
         startStopButton.innerHTML = "Stop";
     } else {
         clearInterval(interval);
         started = false;
         startStopButton.innerHTML = "Start";
+        let score = {
+            name: nameInput.value,
+            time: timer
+        };
+        scores.push(score);
+        displayScores();
     }
 });
+
 
 
 
@@ -167,15 +202,6 @@ function genereTableauAleatoire() {
 //DIFFICILE MODE
 
 btn2.addEventListener("click", afficherTableau1)
-var tabJeu1 = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-];
-
-
-var tabResultat1 = genereTableauAleatoire1()
 
 
 
